@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>💖 Our 1 Year Anniversary 💖</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg,#ffdde1,#ee9ca7);
+    overflow:hidden;
+}
+
+/* floating hearts */
+
+.hearts{
+    position:fixed;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:-1;
+}
+
+.hearts span{
+    position:absolute;
+    bottom:-100px;
+    color:#ff4d88;
+    font-size:25px;
+    animation: float 10s linear infinite;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0);
+        opacity:0;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
+}
+
+.container{
+    width:90%;
+    max-width:700px;
+    background:rgba(255,255,255,0.95);
+    margin:40px auto;
+    border-radius:25px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1{
+    color:#ff4d88;
+    font-size:35px;
+}
+
+.gif{
+    width:180px;
+    border-radius:20px;
+    margin:15px 0;
+}
+
+.question{
+    font-size:24px;
+    color:#444;
+    margin:20px 0;
+    line-height:1.5;
+}
+
+button{
+    padding:14px 28px;
+    border:none;
+    border-radius:15px;
+    margin:10px;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.yes{
+    background:#ff4d88;
+    color:white;
+}
+
+.no{
+    background:#444;
+    color:white;
+}
+
+button:hover{
+    transform:scale(1.08);
+}
+
+#result{
+    font-size:24px;
+    color:#ff4d88;
+    margin-top:20px;
+    line-height:1.8;
+}
+
+.message{
+    font-size:22px;
+    color:#555;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hearts">
+    <span style="left:10%; animation-delay:0s;">💖</span>
+    <span style="left:20%; animation-delay:2s;">💕</span>
+    <span style="left:35%; animation-delay:4s;">💗</span>
+    <span style="left:50%; animation-delay:1s;">💞</span>
+    <span style="left:65%; animation-delay:3s;">💘</span>
+    <span style="left:80%; animation-delay:5s;">💝</span>
+    <span style="left:90%; animation-delay:6s;">💓</span>
+</div>
+
+<div class="container">
+
+<h1>💖 Happy 1 Year Anniversary 💖</h1>
+
+<img id="gif" class="gif"
+src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
+
+<div id="quiz"></div>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+const questions = [
+
+{
+q:"1. Do you still love me if I don't want children? 👶",
+gif:"https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif"
+},
+
+{
+q:"2. Do I annoy you? 😭",
+gif:"https://media.giphy.com/media/l2R0corOGwFTlKZjO/giphy.gif"
+},
+
+{
+q:"3. Is living with me your best decision? 🏡",
+gif:"https://media.giphy.com/media/f6D6Qd9qE33SAfAF69/giphy.gif"
+},
+
+{
+q:"4. Do you really want me? ❤️",
+gif:"https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif"
+},
+
+{
+q:"5. I have trust issues, do you still trust me? 🤍",
+gif:"https://media.giphy.com/media/VbnUQpnihPSIgIXuZv/giphy.gif"
+},
+
+{
+q:"6. Have you survived my mood swings successfully for 1 year? 😂",
+gif:"https://media.giphy.com/media/26FLdmIp6wJr91JAI/giphy.gif"
+},
+
+{
+q:"7. Do you still choose me when I'm cancer? ♋",
+gif:"https://media.giphy.com/media/LYJLrM8VkBmyCKOd1O/giphy.gif"
+},
+
+{
+q:"8. Do you secretly enjoy my overthinking and all the stuff I do? 🤭",
+gif:"https://media.giphy.com/media/3oriO6qJiXajN0TyDu/giphy.gif"
+},
+
+{
+q:"9. Do you secretly hate me? 😤",
+gif:"https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif"
+},
+
+{
+q:"10. Would you ever cheat on me? 👀",
+gif:"https://media.giphy.com/media/QBd2kLB5qDmysEXre9/giphy.gif"
+},
+
+{
+q:"11. Do you still love me even if I steal your money? 💸",
+gif:"https://media.giphy.com/media/26his5i9YJTqsqCyY/giphy.gif"
+},
+
+{
+q:"12. Am I more dramatic than most movies? 🎭",
+gif:"https://media.giphy.com/media/1BXa2alBjrCXC/giphy.gif"
+},
+
+{
+q:"13. Do I love you? 💖",
+gif:"https://media.giphy.com/media/3oriO6qJiXajN0TyDu/giphy.gif"
+},
+
+{
+q:"14. Are we the cutest couple? 🥹",
+gif:"https://media.giphy.com/media/108M7gCS1JSoO4/giphy.gif"
+},
+
+{
+q:"15. Are you ready forever with me? ♾️",
+gif:"https://media.giphy.com/media/euMGM3uD3NHva/giphy.gif"
+}
+
+];
+
+let current = 0;
+let yesCount = 0;
+let noCount = 0;
+
+const quiz = document.getElementById("quiz");
+const result = document.getElementById("result");
+const gif = document.getElementById("gif");
+
+function showQuestion(){
+
+if(current < questions.length){
+
+quiz.innerHTML = `
+
+<div class="question">
+${questions[current].q}
+</div>
+
+<button class="yes" onclick="answer('yes')">
+YES 💖
+</button>
+
+<button class="no" onclick="answer('no')">
+NO 😭
+</button>
+
+`;
+
+gif.src = questions[current].gif;
+
+}
+
+else{
+
+quiz.innerHTML = "";
+
+gif.src = "https://media.giphy.com/media/26FLdmIp6wJr91JAI/giphy.gif";
+
+result.innerHTML = `
+
+🎉 YOU COMPLETED THE ANNIVERSARY TEST 🎉 <br><br>
+
+💖 YES Answers: ${yesCount} <br>
+😭 NO Answers: ${noCount} <br><br>
+
+<div class="message">
+
+Happy 1 Year Anniversary My Love 🥹💖 <br><br>
+
+Thank you for surviving my drama, my overthinking,
+my mood swings and all my chaos for one whole year 😂❤️ <br><br>
+
+No matter how annoying, dramatic or crazy I get...
+thank you for still choosing me everyday 🫶 <br><br>
+
+I hope this is just our beginning ♾️💕 <br><br>
+
+Forever with you sounds perfect to me 💖
+
+</div>
+
+`;
+
+}
+
+}
+
+function answer(choice){
+
+if(choice === "yes"){
+yesCount++;
+}
+else{
+noCount++;
+}
+
+current++;
+showQuestion();
+
+}
+
+showQuestion();
+
+</script>
+
+</body>
+</html>
